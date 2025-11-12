@@ -51,8 +51,8 @@ public class TankMovement : MonoBehaviour
             UpdateGear(false, trackRight);
         }
         
-        rb.AddForceAtPosition(trackRight.transform.forward * (rightTrackGear * moveSpeed * Time.deltaTime), trackRight.transform.position, ForceMode.Impulse);
-        rb.AddForceAtPosition(trackLeft.transform.forward * (leftTrackGear * moveSpeed * Time.deltaTime), trackLeft.transform.position, ForceMode.Impulse);
+        rb.AddForceAtPosition(trackRight.transform.forward * (rightTrackGear * moveSpeed * Time.deltaTime), trackRight.transform.position, ForceMode.Acceleration);
+        rb.AddForceAtPosition(trackLeft.transform.forward * (leftTrackGear * moveSpeed * Time.deltaTime), trackLeft.transform.position, ForceMode.Acceleration);
     }
 
     void FixedUpdate()

@@ -789,11 +789,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7047545387906679400, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
+      propertyPath: maxGear
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047545387906679400, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
       propertyPath: moveSpeed
-      value: 350
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8817169772460065081, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
       propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817169772460065081, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817169772460065081, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
+      propertyPath: m_AngularDamping
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9004869125854524366, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
