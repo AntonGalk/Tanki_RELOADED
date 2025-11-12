@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Shell : MonoBehaviour
@@ -6,18 +7,31 @@ public class Shell : MonoBehaviour
     public float velocity;
     public float weight;
     
-    private Rigidbody rb;
+    [NonSerialized] public Rigidbody rb;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * velocity, ForceMode.Impulse);
+        ApplyForceOnceFired();
+        AdjustWeightToRigidbody();
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
+        Vector3 flyingDirection = rb.linearVelocity - transform.forward;
         
+        transform.rotation = Quaternion.LookRotation(flyingDirection, transform.up);
+    }
+
+    private void AdjustWeightToRigidbody()
+    {
+        rb.mass = weight;
+    }
+
+    private void ApplyForceOnceFired()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * velocity, ForceMode.Impulse);
     }
 }
