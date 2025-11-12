@@ -1,14 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TankMovement : MonoBehaviour
 {
     [SerializeField] private GameObject trackLeft;
-    public int leftTrackGear;
+    [NonSerialized] public int leftTrackGear;
     
     [SerializeField] private GameObject trackRight;
-    public int rightTrackGear;
-    
+    [NonSerialized] public int rightTrackGear;
+
+    private float moveSpeed;
     
     private Rigidbody rb;
     
@@ -16,6 +18,7 @@ public class TankMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        moveSpeed = GetComponent<TankVariables>().moveSpeed;
         rb =  GetComponent<Rigidbody>();
         
         Cursor.lockState = CursorLockMode.Locked;
@@ -26,6 +29,8 @@ public class TankMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        moveSpeed = GetComponent<TankVariables>().moveSpeed;
+        
         //Checks if acceleration inputs are made
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -46,8 +51,13 @@ public class TankMovement : MonoBehaviour
             UpdateGear(false, trackRight);
         }
         
-        rb.AddForceAtPosition(trackRight.transform.forward * (rightTrackGear), trackRight.transform.position, ForceMode.Impulse);
-        rb.AddForceAtPosition(trackLeft.transform.forward * (leftTrackGear), trackLeft.transform.position, ForceMode.Impulse);
+        rb.AddForceAtPosition(trackRight.transform.forward * (rightTrackGear * moveSpeed * Time.deltaTime), trackRight.transform.position, ForceMode.Impulse);
+        rb.AddForceAtPosition(trackLeft.transform.forward * (leftTrackGear * moveSpeed * Time.deltaTime), trackLeft.transform.position, ForceMode.Impulse);
+    }
+
+    void FixedUpdate()
+    {
+        
     }
 
     private void UpdateGear(bool speedIncreased, GameObject affectedTrack)

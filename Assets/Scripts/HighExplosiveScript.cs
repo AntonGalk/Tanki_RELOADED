@@ -1,13 +1,7 @@
 using UnityEngine;
 
-public class TankVariables : MonoBehaviour
+public class HighExplosiveScript : Shell
 {
-    public int maxGear;
-    
-    public float turretRotationSpeed;
-    public float barrelPitchSpeed;
-
-    public float moveSpeed;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

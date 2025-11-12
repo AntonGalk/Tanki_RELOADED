@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 
 public class Turret : MonoBehaviour
 {
-    
     [SerializeField] Transform cameraTransform;
     [SerializeField] private float lookRaycastMaxDistance;
     [NonSerialized] public Vector3 cameraRaycastVectorResult;
@@ -16,6 +15,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject barrelAnchorRef;
     [SerializeField] private GameObject barrelRef;
     [SerializeField] private GameObject turretAnchorRef;
+    
     private float turretRotationSpeed;
     private float barrelPitchSpeed;
     
@@ -35,7 +35,6 @@ public class Turret : MonoBehaviour
         RaycastToBarrelTarget();
 
         AdjustTurretRotation();
-        AdjustBarrelPitch();
     }
 
     private Vector3 RaycastToTurretRotationTarget()
@@ -52,11 +51,11 @@ public class Turret : MonoBehaviour
 
     private Vector3 RaycastToBarrelTarget()
     { 
-        Vector3 barrelDirection = cameraRaycastVectorResult - barrelRef.transform.position;
-        Physics.Raycast(barrelRef.transform.position, barrelDirection, out RaycastHit hitInfo, lookRaycastMaxDistance);
+        Vector3 barrelDirection = cameraRaycastVectorResult - barrelAnchorRef.transform.position;
+        Physics.Raycast(barrelRef.transform.position, barrelAnchorRef.transform.forward, out RaycastHit hitInfo, lookRaycastMaxDistance);
         if (hitInfo.collider == null)
         {
-            hitInfo.point = barrelRef.transform.position + barrelDirection * lookRaycastMaxDistance;
+            hitInfo.point = barrelRef.transform.position + barrelRef.transform.forward * lookRaycastMaxDistance;
         }
         barrelRaycastVectorResult = hitInfo.point;
         
@@ -65,18 +64,29 @@ public class Turret : MonoBehaviour
 
     private void AdjustTurretRotation()
     {
-        Vector3 rotationDirection = cameraRaycastVectorResult - turretAnchorRef.transform.position;
-        Vector3 finalTarget = new Vector3(rotationDirection.x, 0f, rotationDirection.z);
-        //Vector3 lerpTarget = Vector3.Lerp(turretAnchorRef.transform.position, finalTarget, turretRotationSpeed * Time.deltaTime);
+        Vector3 up = turretAnchorRef.transform.up;
+        Vector3 directionToTarget = Vector3.ProjectOnPlane(cameraRaycastVectorResult - turretAnchorRef.transform.position, up);
+        Quaternion turretTargetDirection = Quaternion.LookRotation(directionToTarget, up);
         
-        turretAnchorRef.transform.rotation = Quaternion.LookRotation(finalTarget).normalized;
+        Quaternion from = Quaternion.LookRotation(turretAnchorRef.transform.forward, turretAnchorRef.transform.up);
+        
+        Quaternion turretLerpedRotation = Quaternion.RotateTowards(from, turretTargetDirection, turretRotationSpeed * Time.fixedDeltaTime);
+        turretAnchorRef.transform.rotation = turretLerpedRotation;
+        
+        AdjustBarrelPitch(turretLerpedRotation);
     }
     
-    private void AdjustBarrelPitch()
+    private void AdjustBarrelPitch(Quaternion turretRotation)
     {
-        Vector3 pitchDirection = barrelRaycastVectorResult - barrelAnchorRef.transform.position;
-        Vector3 finalTarget = new Vector3(pitchDirection.x, pitchDirection.y, 0f);
-        barrelAnchorRef.transform.rotation = Quaternion.LookRotation(cameraTransform.forward).normalized;
+        Vector3 directionToTarget = cameraRaycastVectorResult - barrelAnchorRef.transform.position;
+        
+        Quaternion barrelTargetDirection = Quaternion.LookRotation(directionToTarget);
+        Quaternion from = Quaternion.LookRotation(barrelAnchorRef.transform.forward, barrelAnchorRef.transform.up);
+        
+        Quaternion barrelLerpedRotation = Quaternion.RotateTowards(from, barrelTargetDirection, barrelPitchSpeed * Time.fixedDeltaTime);
+
+        Quaternion barrelLerpedPitch = new Quaternion(barrelLerpedRotation.x, turretRotation.y, turretRotation.z, turretRotation.w);
+        barrelAnchorRef.transform.rotation = barrelLerpedPitch;
     }
 
     
