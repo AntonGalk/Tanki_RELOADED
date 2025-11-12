@@ -187,3 +187,4 @@ MonoBehaviour:
   damage: 10
   velocity: 50
   weight: 10
+  recoilForce: 10

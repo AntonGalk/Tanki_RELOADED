@@ -6,6 +6,7 @@ public class Shell : MonoBehaviour
     public float damage;
     public float velocity;
     public float weight;
+    public float recoilForce;
     
     [NonSerialized] public Rigidbody rb;
     

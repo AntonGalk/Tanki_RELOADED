@@ -1491,6 +1491,7 @@ GameObject:
   - component: {fileID: 2615542906600507136}
   - component: {fileID: 6363794861133461581}
   - component: {fileID: 6911198158197244321}
+  - component: {fileID: 1430901131326050830}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -1592,6 +1593,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1430901131326050830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916056471826850011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ce86273b2fec84f976ec4e1e5daa0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BarrelScript
+  firePoint: {fileID: 3666142597493837966}
+  recoilPoint: {fileID: 1494614208903528640}
+  ammunitionTypes:
+  - {fileID: 4629483548180565177, guid: 53216a7d2f978f5449cece5dc3a09402, type: 3}
+  - {fileID: 4629483548180565177, guid: 9d182b72e1a035747ae3552ec2eb7a02, type: 3}
+  - {fileID: 4629483548180565177, guid: 2b40720022620e24382e0f0a0e99aa24, type: 3}
 --- !u!1 &9004869125854524366
 GameObject:
   m_ObjectHideFlags: 0
