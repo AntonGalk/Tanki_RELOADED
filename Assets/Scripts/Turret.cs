@@ -56,7 +56,7 @@ public class Turret : MonoBehaviour
         Physics.Raycast(barrelRef.transform.position, barrelDirection, out RaycastHit hitInfo, lookRaycastMaxDistance);
         if (hitInfo.collider == null)
         {
-            hitInfo.point = barrelRef.transform.position + barrelRef.transform.forward * lookRaycastMaxDistance;
+            hitInfo.point = barrelRef.transform.position + barrelDirection * lookRaycastMaxDistance;
         }
         barrelRaycastVectorResult = hitInfo.point;
         
@@ -67,7 +67,7 @@ public class Turret : MonoBehaviour
     {
         Vector3 rotationDirection = cameraRaycastVectorResult - turretAnchorRef.transform.position;
         Vector3 finalTarget = new Vector3(rotationDirection.x, 0f, rotationDirection.z);
-        Vector3 lerpTarget;
+        //Vector3 lerpTarget = Vector3.Lerp(turretAnchorRef.transform.position, finalTarget, turretRotationSpeed * Time.deltaTime);
         
         turretAnchorRef.transform.rotation = Quaternion.LookRotation(finalTarget).normalized;
     }
