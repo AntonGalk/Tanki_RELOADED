@@ -26,13 +26,18 @@ public class Gear : MonoBehaviour
         moveSpeed = tankVariables.moveSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         foreach (WheelCollider i in wheels)
         {
             i.motorTorque = (currentGear * moveSpeed);
         }
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
     public void UpdateGear(bool speedIncreased)

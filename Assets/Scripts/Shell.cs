@@ -3,22 +3,22 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour
 {
-    public float damage;
-    public float velocity;
-    public float weight;
+    [SerializeField] protected float damage;
+    [SerializeField] protected float velocity;
+    [SerializeField] protected float weight;
     public float recoilForce;
     
-    [NonSerialized] public Rigidbody rb;
+    [NonSerialized] protected Rigidbody rb;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Start()
+    protected void Start()
     {
         ApplyForceOnceFired();
         AdjustWeightToRigidbody();
     }
 
     // Update is called once per frame
-    public void Update()
+    protected void Update()
     {
         Vector3 flyingDirection = rb.linearVelocity - transform.forward;
         
