@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class TreeSpawner : MonoBehaviour
+public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject spawnerBox;
     
-    [SerializeField] private int numberOfTreesToSpawn;
-    [SerializeField] private GameObject objectToSpawn;
+    [SerializeField] private int numberOfObjectsToSpawn;
+    [SerializeField] private GameObject treeToSpawn;
+    [SerializeField] private GameObject stoneToSpawn;
+    
 
     [SerializeField] private float spawningCentreDeadZone;
     
@@ -14,9 +17,9 @@ public class TreeSpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for (int i = 0; i < numberOfTreesToSpawn; i++)
+        for (int i = 0; i < numberOfObjectsToSpawn; i++)
         {
-            SpawnTree();
+            SpawnObject();
         }
         
         spawnerBox.SetActive(false);
@@ -28,15 +31,29 @@ public class TreeSpawner : MonoBehaviour
         
     }
 
-    private void SpawnTree()
+    private void SpawnObject()
     {
         Collider spawnZone = spawnerBox.GetComponent<Collider>();
         Vector3 randomPosition = GetRandomPositionFromSpawnZone(spawnZone);
         
         float randomHeading = Random.Range(0f, 360f);
         Vector3 randomRotationEuler = new Vector3(0, randomHeading, 0);
+
+        int random = Random.Range(0, 3);
+
+        if (random <= 1)
+        {
+            Instantiate(treeToSpawn, randomPosition, Quaternion.Euler(randomRotationEuler));
+        }
+        else if (random >= 2)
+        {
+            GameObject stoneCreated =  Instantiate(stoneToSpawn, randomPosition, Quaternion.Euler(randomRotationEuler));
+            float randomScale = Random.Range(0.75f, 8f);
+            Vector3 randomScaleVector = new Vector3(randomScale, randomScale, randomScale);
+            stoneCreated.transform.localScale = randomScaleVector;
+        }
         
-        Instantiate(objectToSpawn, randomPosition, Quaternion.Euler(randomRotationEuler));
+        
     }
 
     private Vector3 GetRandomPositionFromSpawnZone(Collider spawnZone)

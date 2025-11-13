@@ -21,8 +21,10 @@ public class Shell : MonoBehaviour
     protected void Update()
     {
         Vector3 flyingDirection = rb.linearVelocity - transform.forward;
-        
-        transform.rotation = Quaternion.LookRotation(flyingDirection, transform.up);
+        if (flyingDirection.magnitude > 1.5f)
+        {
+            transform.rotation = Quaternion.LookRotation(flyingDirection, transform.up);
+        }
     }
 
     private void AdjustWeightToRigidbody()
