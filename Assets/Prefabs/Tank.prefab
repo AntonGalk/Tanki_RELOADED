@@ -133,8 +133,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340952326636958052}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.05719237, y: 0.38685906, z: 0.024048042, w: 0.92004937}
-  m_LocalPosition: {x: -3.5455403, y: -0.6192298, z: -3.470692}
+  m_LocalRotation: {x: -0.006394564, y: 0.99275815, z: 0.06171209, w: 0.10286888}
+  m_LocalPosition: {x: -1.0172937, y: -0.61922956, z: 4.8560967}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -676,8 +676,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2288643721882781614}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.057192348, y: 0.38685906, z: 0.024048036, w: 0.92004937}
-  m_LocalPosition: {x: -3.5455403, y: -0.60922956, z: -3.470692}
+  m_LocalRotation: {x: -0.0063945614, y: 0.9927582, z: 0.061712094, w: 0.102868915}
+  m_LocalPosition: {x: -1.0172937, y: -0.61922956, z: 4.8560967}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1238,15 +1238,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5390522830813327472}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.79, z: 0}
+  m_LocalRotation: {x: -0, y: -0.8769664, z: -0, w: 0.4805517}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 698243950535550588}
   - {fileID: 6422317846961068821}
   m_Father: {fileID: 2978533536475075248}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -122.557, z: 0}
 --- !u!1 &5472263844627455063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1282,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7441290587249125318
 CanvasRenderer:
@@ -1872,7 +1872,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9192316300139457077
 CanvasRenderer:
@@ -2374,7 +2374,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankVariables
   maxGear: 2
   turretRotationSpeed: 10
-  barrelPitchSpeed: 5
+  barrelPitchSpeed: 2
+  barrelMinPitch: -15
+  barrelMaxPitch: 25
   moveSpeed: 100
 --- !u!54 &8817169772460065081
 Rigidbody:
