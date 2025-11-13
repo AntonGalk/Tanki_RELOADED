@@ -9,21 +9,30 @@ public class Gear : MonoBehaviour
 
     private TankMovement tankMovement;
     
+    [SerializeField] private WheelCollider[] wheels;
+    
     [SerializeField] TextMeshProUGUI trackGearText;
     [SerializeField] private bool isLeftTrack;
     private int maxGear;
+    
+    private float moveSpeed;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         tankMovement = GetComponentInParent<TankMovement>();
-        maxGear = GetComponentInParent<TankVariables>().maxGear;
+        TankVariables tankVariables = GetComponentInParent<TankVariables>();
+        maxGear = tankVariables.maxGear;
+        moveSpeed = tankVariables.moveSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        foreach (WheelCollider i in wheels)
+        {
+            i.motorTorque = (currentGear * moveSpeed);
+        }
     }
 
     public void UpdateGear(bool speedIncreased)

@@ -10,7 +10,7 @@ public class TankMovement : MonoBehaviour
     [SerializeField] private GameObject trackRight;
     [NonSerialized] public int rightTrackGear;
 
-    private float moveSpeed;
+    
     
     private Rigidbody rb;
     
@@ -18,7 +18,7 @@ public class TankMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        moveSpeed = GetComponent<TankVariables>().moveSpeed;
+        
         rb =  GetComponent<Rigidbody>();
         
         Cursor.lockState = CursorLockMode.Locked;
@@ -29,8 +29,6 @@ public class TankMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveSpeed = GetComponent<TankVariables>().moveSpeed;
-        
         //Checks if acceleration inputs are made
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -51,8 +49,10 @@ public class TankMovement : MonoBehaviour
             UpdateGear(false, trackRight);
         }
         
-        rb.AddForceAtPosition(trackRight.transform.forward * (rightTrackGear * moveSpeed * Time.deltaTime), trackRight.transform.position, ForceMode.Acceleration);
-        rb.AddForceAtPosition(trackLeft.transform.forward * (leftTrackGear * moveSpeed * Time.deltaTime), trackLeft.transform.position, ForceMode.Acceleration);
+        
+        
+        //rb.AddForceAtPosition(trackRight.transform.forward * (rightTrackGear * moveSpeed * Time.deltaTime), trackRight.transform.position, ForceMode.Acceleration);
+        //rb.AddForceAtPosition(trackLeft.transform.forward * (leftTrackGear * moveSpeed * Time.deltaTime), trackLeft.transform.position, ForceMode.Acceleration);
     }
 
     void FixedUpdate()
