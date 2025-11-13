@@ -6,6 +6,8 @@ public class TankVariables : MonoBehaviour
     
     public float turretRotationSpeed;
     public float barrelPitchSpeed;
+    public float barrelMinPitch;
+    public float barrelMaxPitch;
 
     public float moveSpeed;
     

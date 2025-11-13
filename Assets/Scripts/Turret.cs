@@ -18,15 +18,18 @@ public class Turret : MonoBehaviour
     
     private float turretRotationSpeed;
     private float barrelPitchSpeed;
+    private float barrelMinPitch;
+    private float barrelMaxPitch;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         TankVariables tankVariables = GetComponentInParent<TankVariables>();
         turretRotationSpeed  = tankVariables.turretRotationSpeed;
         barrelPitchSpeed = tankVariables.barrelPitchSpeed;
+        barrelMinPitch =  tankVariables.barrelMinPitch;
+        barrelMaxPitch = tankVariables.barrelMaxPitch;
     }
 
     // Update is called once per frame
@@ -66,6 +69,11 @@ public class Turret : MonoBehaviour
     private void AdjustTurretRotation()
     {
         Vector3 up = turretAnchorRef.transform.up;
+        
+        
+        
+        
+        
         Vector3 directionToTarget = Vector3.ProjectOnPlane(cameraRaycastVectorResult - turretAnchorRef.transform.position, up);
         Quaternion turretTargetDirection = Quaternion.LookRotation(directionToTarget, up);
         
@@ -74,20 +82,41 @@ public class Turret : MonoBehaviour
         Quaternion turretLerpedRotation = Quaternion.RotateTowards(from, turretTargetDirection, turretRotationSpeed * Time.fixedDeltaTime);
         turretAnchorRef.transform.rotation = turretLerpedRotation;
         
+        
+        
+        
         AdjustBarrelPitch(turretLerpedRotation);
     }
     
     private void AdjustBarrelPitch(Quaternion turretRotation)
     {
         Vector3 directionToTarget = cameraRaycastVectorResult - barrelAnchorRef.transform.position;
-        
-        Quaternion barrelTargetDirection = Quaternion.LookRotation(directionToTarget);
-        Quaternion from = Quaternion.LookRotation(barrelAnchorRef.transform.forward, barrelAnchorRef.transform.up);
-        
-        Quaternion barrelLerpedRotation = Quaternion.RotateTowards(from, barrelTargetDirection, barrelPitchSpeed * Time.fixedDeltaTime);
 
-        Quaternion barrelLerpedPitch = new Quaternion(barrelLerpedRotation.x, turretRotation.y, turretRotation.z, turretRotation.w);
-        barrelAnchorRef.transform.rotation = barrelLerpedPitch;
+        Vector3 localDirection = turretAnchorRef.transform.InverseTransformDirection(directionToTarget.normalized);
+        
+        float desiredPitch = -Mathf.Atan2(localDirection.y, localDirection.z) * Mathf.Rad2Deg;
+        
+        desiredPitch = Mathf.Clamp(desiredPitch, barrelMinPitch, barrelMaxPitch);
+        
+        Quaternion targetLocalRot = Quaternion.Euler(desiredPitch, 0f, 0f);
+        barrelAnchorRef.transform.localRotation = Quaternion.Slerp(barrelAnchorRef.transform.localRotation, targetLocalRot, barrelPitchSpeed * Time.deltaTime);
+
+
+        //Vector3 directionToTarget = Vector3.ProjectOnPlane(cameraRaycastVectorResult - barrelAnchorRef.transform.position, barrelAnchorRef.transform.right);
+        //Quaternion barrelTargetDirection = Quaternion.LookRotation(directionToTarget, barrelAnchorRef.transform.right);
+
+        //Quaternion from = Quaternion.LookRotation(barrelAnchorRef.transform.forward, turretAnchorRef.transform.right);
+
+        //Quaternion barrelLerpedRotation = Quaternion.RotateTowards(from, barrelTargetDirection, barrelPitchSpeed * Time.fixedDeltaTime);
+        //barrelAnchorRef.transform.rotation = barrelLerpedRotation;
+
+
+
+
+
+
+        //Quaternion barrelLerpedPitch = new Quaternion(barrelLerpedRotation.x, barrelLerpedRotation.y, barrelLerpedRotation.z, barrelLerpedRotation.w);
+        //barrelAnchorRef.transform.rotation = barrelLerpedPitch;
     }
 
     
