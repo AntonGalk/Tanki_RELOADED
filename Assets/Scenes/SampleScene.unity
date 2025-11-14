@@ -623,110 +623,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 52018801690057276, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11800009
-      objectReference: {fileID: 0}
-    - target: {fileID: 151835454501008889, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 151835454501008889, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 693970680563781183, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11800009
-      objectReference: {fileID: 0}
-    - target: {fileID: 1555653738964231347, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11800015
-      objectReference: {fileID: 0}
-    - target: {fileID: 2036393028980287659, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11800015
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748711144566285371, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748711144566285371, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2755966379284616582, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 2755966379284616582, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3508547342538883369, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11800015
-      objectReference: {fileID: 0}
-    - target: {fileID: 3789639590881073858, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3789639590881073858, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4297813055097611733, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4297813055097611733, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4316644982946524586, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11800009
-      objectReference: {fileID: 0}
-    - target: {fileID: 4380579847705921064, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4380579847705921064, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4623226177734793484, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4623226177734793484, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4650967358820482333, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4650967358820482333, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4776859259466712815, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.118
-      objectReference: {fileID: 0}
-    - target: {fileID: 5013052930868301574, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11800009
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367256868037224302, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367256868037224302, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5655702728336507218, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.301285
@@ -767,25 +663,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8139640210699997122, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11800015
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602002881484765817, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602002881484765817, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9004869125854524366, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
       propertyPath: m_Name
       value: Tank
-      objectReference: {fileID: 0}
-    - target: {fileID: 9140685413890274987, guid: 12a8c0ae16c566a4cbea728a18228d23, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11800015
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
