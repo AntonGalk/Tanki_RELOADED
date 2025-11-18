@@ -13,21 +13,23 @@ public class BarrelScript : MonoBehaviour
     [SerializeField] private Shell[] ammunitionTypes;
     
     [SerializeField] private TextMeshProUGUI reloadTimeRemainingTextBox;
-    [SerializeField] private float reloadTime;
+    
+    private float reloadTime;
     private float reloadTimeRemaining;
     private bool reloading;
     
     private Rigidbody rb;
     
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        TankVariables tankVariables = GetComponentInParent<TankVariables>();
+        reloadTime = tankVariables.reloadTime;
+        
         rb = GetComponentInParent<Rigidbody>();
         reloadTimeRemainingTextBox.enabled = false;
+         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (reloading)

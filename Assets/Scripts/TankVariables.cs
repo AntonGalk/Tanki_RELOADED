@@ -8,6 +8,8 @@ public class TankVariables : MonoBehaviour
     public float barrelPitchSpeed;
     public float barrelMinPitch;
     public float barrelMaxPitch;
+    
+    public float reloadTime;
 
     public float moveSpeed;
     
