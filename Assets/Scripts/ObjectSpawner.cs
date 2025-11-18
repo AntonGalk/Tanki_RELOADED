@@ -25,12 +25,6 @@ public class ObjectSpawner : MonoBehaviour
         spawnerBox.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void SpawnObject()
     {
         Collider spawnZone = spawnerBox.GetComponent<Collider>();

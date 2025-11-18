@@ -9,22 +9,17 @@ public class TankMovement : MonoBehaviour
     
     [SerializeField] private GameObject trackRight;
     [NonSerialized] public int rightTrackGear;
-
-    
     
     private Rigidbody rb;
-    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         rb =  GetComponent<Rigidbody>();
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    
     
     // Update is called once per frame
     void Update()
@@ -49,15 +44,8 @@ public class TankMovement : MonoBehaviour
             UpdateGear(false, trackRight);
         }
         
-        
-        
         //rb.AddForceAtPosition(trackRight.transform.forward * (rightTrackGear * moveSpeed * Time.deltaTime), trackRight.transform.position, ForceMode.Acceleration);
         //rb.AddForceAtPosition(trackLeft.transform.forward * (leftTrackGear * moveSpeed * Time.deltaTime), trackLeft.transform.position, ForceMode.Acceleration);
-    }
-
-    void FixedUpdate()
-    {
-        
     }
 
     private void UpdateGear(bool speedIncreased, GameObject affectedTrack)

@@ -1,3 +1,4 @@
+
 using System;
 using UnityEngine;
 
@@ -36,5 +37,10 @@ public class Shell : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * velocity, ForceMode.Impulse);
+    }
+
+    protected void OnTriggerEnter (Collider collider)
+    {
+       Destroy(gameObject); 
     }
 }
