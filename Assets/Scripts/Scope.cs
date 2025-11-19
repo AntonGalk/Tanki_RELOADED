@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class Scope : MonoBehaviour
 {
-    [SerializeField] private Camera scopeCamera;
-    [SerializeField] private Camera thirdPersonCamera;
-
     private int cameraZoomChangeValue;
     private float cameraZoomDesired;
     
     private bool scoping = false;
 
+    [SerializeField] private Animator animator;
+
     void Start()
     {
-        cameraZoomDesired = scopeCamera.fieldOfView;
+        
     }
     
     void Update()
@@ -24,8 +23,6 @@ public class Scope : MonoBehaviour
                 cameraZoomDesired -= cameraZoomChangeValue * 2;
                 
                 cameraZoomDesired = Mathf.Clamp(cameraZoomDesired, 25, 55);
-
-                scopeCamera.fieldOfView = cameraZoomDesired;
             }
         }
         
@@ -33,22 +30,14 @@ public class Scope : MonoBehaviour
         {
             if (!scoping)
             {
-                scopeCamera.enabled = true;
-                thirdPersonCamera.enabled = false;
-                
-                scoping =  true;
-                
-                return;
+                animator.Play("FirstsPersonCamera");
+                scoping = true;
             }
 
             if (scoping)
             {
-                thirdPersonCamera.enabled = true;
-                scopeCamera.enabled = false;
-                
+                animator.Play("thirdPersonCamera");
                 scoping = false;
-
-                return;
             }
         }
     }

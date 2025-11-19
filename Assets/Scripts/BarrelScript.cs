@@ -5,8 +5,10 @@ public class BarrelScript : MonoBehaviour
 {
     [SerializeField] private GameObject firePoint;
     
-    [SerializeField] private GameObject recoilPoint;
     [SerializeField] private CameraShake cameraShakeScript;
+    [SerializeField] private float cameraShakeDuration;
+    
+    [SerializeField] private GameObject recoilPoint;
     [SerializeField] private float recoilCameraShakeMagnitude;
     [SerializeField] private float recoilCameraShakeDuration;
 
@@ -50,16 +52,18 @@ public class BarrelScript : MonoBehaviour
     private void Fire()
     {
         Shell shotShell = Instantiate(ammunitionTypes[Random.Range(0, ammunitionTypes.Length)],  firePoint.transform.position, firePoint.transform.rotation);
-        
-        ApplyRecoil(shotShell.recoilForce);
-        StartCoroutine(cameraShakeScript.Shake(recoilCameraShakeMagnitude,  recoilCameraShakeDuration));
 
+        float shotShellRecoilValue = shotShell.recoilForce;
+            
+        ApplyRecoil(shotShellRecoilValue);
+        
+        ApplyCameraShake(shotShellRecoilValue / 10, cameraShakeDuration);
+        
         TurretRelaodStarted();
     }
 
     private void ApplyRecoil(float recoilValue)
     {
-
         rb.AddForceAtPosition(-recoilPoint.transform.forward * (recoilValue * 5) , recoilPoint.transform.position, ForceMode.Impulse);
     }
 
@@ -79,7 +83,6 @@ public class BarrelScript : MonoBehaviour
         
         reloadTimeRemaining -= Time.deltaTime;
         
-
         if (reloadTimeRemaining <= 0)
         {
             TurretReadyToFire();
@@ -90,5 +93,10 @@ public class BarrelScript : MonoBehaviour
     {
         reloading = false;
         reloadTimeRemainingTextBox.enabled = false;
+    }
+
+    private void ApplyCameraShake(float shakeIntensity, float shakeDuration)
+    {
+        cameraShakeScript.ShakeCamera(shakeIntensity, shakeDuration);
     }
 }

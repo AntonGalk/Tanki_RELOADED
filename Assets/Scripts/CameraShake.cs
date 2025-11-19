@@ -1,30 +1,34 @@
-using System;
-using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
-using Random = UnityEngine.Random;
+
 
 public class CameraShake : MonoBehaviour
 {
-    private Vector3 originalPosition;
+    private CinemachineBasicMultiChannelPerlin perlin;
+    private float shakeTimer;
+    private float shakeTimerTotal;
+    private float startingShakeIntensity;
 
-    private void Awake()
+    void Start()
     {
-        originalPosition = new Vector3(0, 0, 0);
+        perlin = gameObject.GetComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
-    public IEnumerator Shake(float shakeMagnitude, float shakeDuration)
+    void Update()
     {
-        float elapsedShakeTime = 0;
-
-        while (elapsedShakeTime < shakeDuration)
+        if (shakeTimer > 0)
         {
-            elapsedShakeTime += Time.deltaTime;
-            
-            transform.localPosition = originalPosition + Random.insideUnitSphere * shakeMagnitude;
-            
-            yield return null;
+            shakeTimer -= Time.deltaTime;
+            perlin.AmplitudeGain = Mathf.Lerp(startingShakeIntensity, 0f, (1 - (shakeTimer / shakeTimerTotal)));
         }
+    }
 
-        transform.localPosition = originalPosition;
+    public void ShakeCamera(float shakeIntensity, float shakeDuration)
+    {
+        perlin.AmplitudeGain = shakeIntensity;
+        
+        startingShakeIntensity =  shakeIntensity;
+        shakeTimerTotal = shakeDuration;
+        shakeTimer = shakeDuration;
     }
 }
