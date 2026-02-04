@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shell
   damage: 10
-  velocity: 50
+  velocity: 150
   weight: 10
   recoilForce: 100
 --- !u!65 &5599623473023968327

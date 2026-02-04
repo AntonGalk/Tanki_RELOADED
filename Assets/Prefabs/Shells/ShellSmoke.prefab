@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Smoke
   damage: 0
-  velocity: 35
+  velocity: 150
   weight: 25
   recoilForce: 100
   smokeEffect: {fileID: 6116385892779146952, guid: bbd98cdc7e6bcc14b9872005ba9df2a2, type: 3}

@@ -6,13 +6,11 @@ public class HighExplosive : Shell
     [SerializeField] private float explotionRadius;
     private bool exploded = false;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {   
         base.Start();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         base.Update();
@@ -23,8 +21,6 @@ public class HighExplosive : Shell
         Instantiate(explodeEffect,  transform.position, transform.rotation);
         
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, explotionRadius, transform.forward, 0);
-
-        
         
         if (hits.Length > 0)
         {
@@ -33,7 +29,6 @@ public class HighExplosive : Shell
                 Debug.Log(hit.transform.name);
             }
         }
-
         base.OnTriggerEnter(collider);
     }
 

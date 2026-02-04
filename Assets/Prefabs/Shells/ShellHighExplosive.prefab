@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HighExplosiveScript
   damage: 5
-  velocity: 35
+  velocity: 75
   weight: 75
   recoilForce: 100
   explodeEffect: {fileID: 6116385892779146952, guid: 147c509587bd3284788cbc33ca74f94f, type: 3}

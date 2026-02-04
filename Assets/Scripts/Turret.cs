@@ -96,7 +96,7 @@ public class Turret : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1f, 0f, 0f); 
-        Gizmos.DrawLine(cameraTransform.position, cameraRaycastVectorResult);
+        //Gizmos.DrawLine(cameraTransform.position, cameraRaycastVectorResult);
         Gizmos.DrawSphere(cameraRaycastVectorResult, 0.5f);
         
         Gizmos.color = new Color(1f, 1f, 0f);
